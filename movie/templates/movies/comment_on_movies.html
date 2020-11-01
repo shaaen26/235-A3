@@ -1,0 +1,33 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+<main id="main">
+    <h1>{{ title }}</h1>
+    <div style="clear:both">
+        <div class="form-wrapper">
+            <form action="{{handler_url}}" method="post">
+                {{form.movie_id}} <!-- Need to include this hidden field as it tracks the article being commented. -->
+                {{ form.genre }}
+                {{ form.cursor }}
+                {{ form.search_keyword }}
+            {{ form.search_type }}
+                {{form.csrf_token}} <!-- Need to include this token - Flask WTForms requires it. -->
+
+                <br>
+                <div class ="form-field">{{form.comment.label}} </br>{{form.comment(size = 100, placeholder="type your comment", class="textarea", cols="50", rows="6", wrap="hard")}}
+                    {% if form.comment.errors %}
+                        <ul class="errors">
+        	            {% for error in form.comment.errors %}
+        		            <li>{{error}}</li>
+                        {% endfor %}
+                        </ul>
+                    {% endif %}
+                </div>
+                <div class="form-field">{{ form.rank.label }} <br/> {{ form.rank }}</div>
+                {{ form.submit }}
+            </form>
+        </div>
+    </div>
+</main>
+{% endblock %}

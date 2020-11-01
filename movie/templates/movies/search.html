@@ -1,0 +1,22 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+<main id="main">
+    <h1>{{ title }}</h1>
+    <div style="clear:both">
+        <div class="form-wrapper">
+            <form action="{{handler_url}}" method="post">
+                {{form.csrf_token}} <!-- Need to include this token - Flask WTForms requires it. -->
+
+                <br>
+                <div class ="form-field">{{form.option.label}} {{form.option}}
+
+                </div>
+                <div class="form-field">{{ form.keyword.label }} <br/> {{ form.keyword }}</div>
+                {{ form.submit }}
+            </form>
+        </div>
+    </div>
+</main>
+{% endblock %}

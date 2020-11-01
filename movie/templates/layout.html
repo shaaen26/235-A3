@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Movie center</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}"/>
+
+    <link rel="bookmark" type="image/x-icon" href="favicon.ico"/>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    <link rel="icon" href="favicon.ico"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+</head>
+
+
+
+<body>
+<div id="body">
+    <!-- Include navigation partial. -->
+    {% include 'navigation.html' %}
+
+    <div id="content-2">
+        <!-- Include header partial. -->
+        {% include 'header.html' %}
+
+        <div id="container">
+            <!-- Main content block to be supplied by page. -->
+            {% block content %} {% endblock %}
+
+
+        </div>
+
+    </div>
+    <!-- Add photo to the movies -->
+
+</div>
+</body>
+</html>
